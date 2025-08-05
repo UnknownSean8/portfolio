@@ -1,0 +1,115 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout>
+    <div class="wrapper wrapper--narrow">
+        <div class="layout-grid">
+            <!-- Profile Card -->
+            <div class="card card-profile">
+                <h1>I'm Sean Leong Wei Xuan</h1>
+
+                <p>
+                    I am a software developer with expertise in both front-end
+                    and backend technologies, including Javascript, Python, and
+                    Java. Passionate about building scalable and user-friendly
+                    applications, I focus on writing clean, efficient code and
+                    staying current with industry trends. Skilled in API
+                    integrations, responsive design, and performance
+                    optimization.
+                </p>
+
+                <hr />
+
+                <h2>Places I've worked at</h2>
+
+                <div class="work-grid"></div>
+            </div>
+
+            <!-- Profile Image Card -->
+            <div class="card card-img">
+                <Image
+                    src="/src/assets/portrait2.jpeg"
+                    alt="profile_img"
+                    height={1}
+                    width={1}
+                    loading={"eager"}
+                />
+            </div>
+
+            <!-- Socials Card -->
+            <div class="card card-socials">
+                <Icon name="github" />
+                <!-- <Icon name="linkedin" />
+                <Icon name="instagram" /> -->
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    h1 {
+        font-size: var(--fs-900);
+        margin-bottom: var(--gap);
+    }
+
+    p,
+    hr {
+        margin-bottom: var(--gap);
+    }
+
+    h2 {
+        font-size: var(--fs-500);
+        text-align: center;
+    }
+
+    .wrapper--narrow {
+        max-width: 860px;
+        margin-block: 15vh;
+    }
+
+    .layout-grid {
+        --gap: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: var(--gap);
+    }
+
+    .card {
+        padding: 1rem;
+        border: 1px solid grey;
+        border-radius: 25px;
+        box-shadow: 0 1rem 1.5rem -0.5rem rgb(0 50 100 / 0.15);
+    }
+
+    .card-img {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 2;
+        padding: 0;
+        overflow: hidden;
+        max-height: 30rem;
+    }
+
+    .card-socials {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    .card-socials > * {
+        display: flex;
+        justify-content: space-around;
+        scale: 3;
+    }
+
+    .card-socials > *:hover {
+        scale: 3.5;
+    }
+
+    .card-profile {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 3;
+    }
+</style>

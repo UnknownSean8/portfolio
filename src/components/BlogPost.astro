@@ -1,0 +1,21 @@
+---
+const { title, url, description } = Astro.props;
+---
+
+<li>
+    <a class="card" href={url}>
+            <h2 class="card-title">{title}</h2>
+            <p class="card-description">{description}</p>
+    </a>
+</li>
+
+<style>
+    .card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--color-gray-400);
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem;
+    }
+</style>
