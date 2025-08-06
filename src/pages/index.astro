@@ -2,23 +2,40 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import portrait from "../assets/portrait2.jpeg";
 ---
 
 <Layout>
     <div class="wrapper wrapper--narrow">
         <div class="layout-grid">
+            <!-- Profile Image Card -->
+            <div class="card card-img">
+                <Image
+                    src={portrait}
+                    alt="profile_img"
+                    height={1000}
+                    width={1000}
+                    loading={"eager"}
+                />
+            </div>
+
             <!-- Profile Card -->
             <div class="card card-profile">
-                <h1>I'm Sean Leong Wei Xuan</h1>
+                <h1><span>Hiii I'm</span><br />Sean Leong Wei Xuan</h1>
 
                 <p>
                     I am a software developer with expertise in both front-end
                     and backend technologies, including Javascript, Python, and
-                    Java. Passionate about building scalable and user-friendly
+                    Java.
+                </p>
+                <p>
+                    Passionate about building scalable and user-friendly
                     applications, I focus on writing clean, efficient code and
-                    staying current with industry trends. Skilled in API
-                    integrations, responsive design, and performance
-                    optimization.
+                    staying current with industry trends.
+                </p>
+                <p>
+                    Skilled in API integrations, responsive design, and
+                    performance optimization.
                 </p>
 
                 <hr />
@@ -26,17 +43,6 @@ import { Image } from "astro:assets";
                 <h2>Places I've worked at</h2>
 
                 <div class="work-grid"></div>
-            </div>
-
-            <!-- Profile Image Card -->
-            <div class="card card-img">
-                <Image
-                    src="/src/assets/portrait2.jpeg"
-                    alt="profile_img"
-                    height={1}
-                    width={1}
-                    loading={"eager"}
-                />
             </div>
 
             <!-- Socials Card -->
@@ -55,27 +61,51 @@ import { Image } from "astro:assets";
         margin-bottom: var(--gap);
     }
 
+    span {
+        font-size: var(--fs-400);
+        font-weight: var(--fw-light);
+        color: var(--color-gray-500);
+    }
+
     p,
     hr {
         margin-bottom: var(--gap);
     }
 
     h2 {
-        font-size: var(--fs-500);
+        font-size: var(--fs-400);
         text-align: center;
     }
 
     .wrapper--narrow {
         max-width: 860px;
-        margin-block: 15vh;
     }
 
     .layout-grid {
         --gap: 1rem;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
         gap: var(--gap);
+    }
+
+    @media (min-width: 800px) {
+        .layout-grid {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        .card-img {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 2;
+        }
+
+        .card-socials {
+            grid-column: 1 / span 1;
+            grid-row: 3 / span 1;
+        }
+        .card-profile {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 3;
+        }
     }
 
     .card {
@@ -86,16 +116,9 @@ import { Image } from "astro:assets";
     }
 
     .card-img {
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 2;
         padding: 0;
         overflow: hidden;
         max-height: 30rem;
-    }
-
-    .card-socials {
-        grid-column: 1 / span 1;
-        grid-row: 3 / span 1;
     }
 
     .card-socials > * {
@@ -106,10 +129,5 @@ import { Image } from "astro:assets";
 
     .card-socials > *:hover {
         scale: 3.5;
-    }
-
-    .card-profile {
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 3;
     }
 </style>

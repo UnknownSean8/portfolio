@@ -3,11 +3,8 @@ import BlogPost from "../components/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
 
 const allBlogPosts = Object.values(
-    import.meta.glob("./posts/*.md", { eager: true })
+    import.meta.glob("./posts/*.mdx", { eager: true })
 );
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
@@ -20,9 +17,13 @@ const allBlogPosts = Object.values(
                         url={post.url}
                         title={post.frontmatter.title}
                         description={post.frontmatter.description}
+                        tags={post.frontmatter.tags}
+                        date={post.frontmatter.pubDate}
                     />
                 ))
             }
         </ul>
     </div>
 </Layout>
+
+<style></style>

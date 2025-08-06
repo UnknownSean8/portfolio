@@ -1,7 +1,27 @@
 ---
-const name = "Sean";
+const name = "Sean Leong";
 ---
 
 <footer>
-    <div class="wrapper">Created by {name}. Built with Astro.</div>
+    <div class="footer-wrapper">
+        Created by {name}. Built with <a href="https://astro.build/" target="_"
+            >Astro</a
+        >.
+    </div>
 </footer>
+
+<style>
+    footer {
+        position: sticky;
+        bottom: 0;
+    }
+
+    a {
+        font-weight: var(--fw-bold);
+    }
+    .footer-wrapper {
+        max-width: 1280px;
+        margin-inline: auto;
+        padding-inline: 2rem;
+    }
+</style>

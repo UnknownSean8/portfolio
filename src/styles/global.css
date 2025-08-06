@@ -7,8 +7,8 @@
     --fw-normal: 400;
     --fw-bold: 800;
 
-    --fs-400: 0.9365rem;
-    --fs-500: 1.25rem;
+    --fs-300: 0.9365rem;
+    --fs-400: 1.25rem;
     --fs-600: 1.625rem;
     --fs-900: 2.5rem;
 }
@@ -35,8 +35,14 @@ h1,
 h2,
 h3 {
     color: var(--color-gray-900);
-    font-size: large;
+    font-size: var(--fs-600);
     line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: var(--fs-900);
+    margin-bottom: 3rem;
 }
 
 img {
@@ -48,4 +54,11 @@ img {
     max-width: 1280px;
     margin-inline: auto;
     padding-inline: 2rem;
+    margin-block: 5vh;
+}
+
+@media (min-width: 800px) {
+    .wrapper {
+        margin-block: 15vh;
+    }
 }

@@ -1,11 +1,30 @@
 ---
-const { title, url, description } = Astro.props;
+import BlogTag from "./BlogTag.astro";
+
+const { title, url, description, tags, date } = Astro.props;
+
+const dateOptions: object = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+};
+
+const formattedPublishDate = new Date(date).toLocaleDateString(
+    "en-GB",
+    dateOptions
+);
 ---
 
 <li>
     <a class="card" href={url}>
+        <div class="card-header">
             <h2 class="card-title">{title}</h2>
-            <p class="card-description">{description}</p>
+            <p>{formattedPublishDate}</p>
+        </div>
+        <p class="card-description">{description}</p>
+        <ul class="tag-list">
+            {tags.map((tag: any) => <BlogTag tag={tag} />)}
+        </ul>
     </a>
 </li>
 
@@ -17,5 +36,21 @@ const { title, url, description } = Astro.props;
         border-radius: 1rem;
         padding: 1rem;
         margin: 1rem;
+        gap: 0.5rem;
+        box-shadow: 0 1rem 1.5rem -0.5rem rgb(0 50 100 / 0.15);
+    }
+
+    .card:hover {
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 </style>

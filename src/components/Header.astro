@@ -3,22 +3,34 @@
 ---
 
 <header>
-    <div class="wrapper">
-        <h1>Sean Leong</h1>
+    <div class="header-wrapper">
+        <h2><a href="/">Sean Leong</a></h2>
         <ul class="list">
             <a href="/">About Me</a>
             <a href="/about">Experience</a>
             <a href="/blog">Blog</a>
         </ul>
-        <button>Quack Me!</button>
+        <a href="">Quack Me!</a>
     </div>
 </header>
 
 <style>
     header {
+        position: sticky;
+        top: 0;
         padding: 1rem 0;
     }
-    
+
+    .header-wrapper {
+        max-width: 1280px;
+        margin-inline: auto;
+        padding-inline: 2rem;
+    }
+
+    h2 {
+        font-size: var(--fs-400);
+    }
+
     header div {
         display: flex;
         justify-content: space-between;
