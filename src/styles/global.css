@@ -23,7 +23,7 @@ html {
     font-family: var(--ff-sans);
     font-weight: var(--fw-normal);
     line-height: 1.7;
-    color: var(--color-gray-400);
+    color: var(--color-gray-500);
 }
 
 body {

@@ -1,0 +1,7 @@
+{
+    "name": "astro-portfolio",
+    "compatibility_date": "2026-01-05", // Update to the day you deploy
+    "assets": {
+        "directory": "./dist"
+    }
+}

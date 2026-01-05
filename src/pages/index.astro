@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import portrait from "../assets/portrait2.jpeg";
+import type { record } from "astro:schema";
 ---
 
 <Layout>
@@ -13,8 +14,8 @@ import portrait from "../assets/portrait2.jpeg";
                 <Image
                     src={portrait}
                     alt="profile_img"
-                    height={1000}
-                    width={1000}
+                    height={500}
+                    width={500}
                     loading={"eager"}
                 />
             </div>
@@ -40,14 +41,14 @@ import portrait from "../assets/portrait2.jpeg";
 
                 <hr />
 
-                <h2>Places I've worked at</h2>
+                <h2>Currently working for: WMDE</h2>
 
                 <div class="work-grid"></div>
             </div>
 
             <!-- Socials Card -->
             <div class="card card-socials">
-                <Icon name="github" />
+                <Icon name="github" size={70} />
                 <!-- <Icon name="linkedin" />
                 <Icon name="instagram" /> -->
             </div>
@@ -121,13 +122,18 @@ import portrait from "../assets/portrait2.jpeg";
         max-height: 30rem;
     }
 
+    .card-socials {
+        display: flex;
+        justify-items: center;
+    }
+
     .card-socials > * {
         display: flex;
         justify-content: space-around;
-        scale: 3;
+        margin: auto;
     }
 
     .card-socials > *:hover {
-        scale: 3.5;
+        scale: 1.1;
     }
 </style>

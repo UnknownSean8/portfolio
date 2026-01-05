@@ -10,7 +10,11 @@
             <a href="/about">Experience</a>
             <a href="/blog">Blog</a>
         </ul>
-        <a href="">Quack Me!</a>
+        <a class="button" href="">Quack Me!</a>
+        <div class="mobile">
+            Hamburger
+            <div class="mobile-list"></div>
+        </div>
     </div>
 </header>
 
@@ -43,5 +47,25 @@
     .list {
         display: flex;
         gap: 3rem;
+    }
+
+    ul,
+    .button {
+        display: none;
+    }
+
+    .mobile {
+        display: inline;
+    }
+
+    @media (min-width: 800px) {
+        ul,
+        .button {
+            display: flex;
+        }
+
+        .mobile {
+            display: none;
+        }
     }
 </style>
