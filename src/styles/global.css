@@ -1,6 +1,10 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+    themes: light, coffee --prefersdark, cupcake --default;
+    darkmode: [ "class", '[data-theme="coffee"]'];
+}
 
-:root {
+/* :root {
     --ff-sans: sans-serif;
 
     --fw-light: 200;
@@ -61,4 +65,4 @@ img {
     .wrapper {
         margin-block: 15vh;
     }
-}
+} */

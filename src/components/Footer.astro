@@ -4,21 +4,26 @@ const name = "Sean Leong";
 
 <footer>
     <div class="footer-wrapper">
-        Created by {name}. Built with <a href="https://astro.build/" target="_"
-            >Astro</a
-        >.
+        <div
+            class="footer footer-wrapper footer-center bg-base-200 rounded-2xl text-base-content p-4"
+        >
+            <aside>
+                <p>
+                    Copyright © {new Date().getFullYear()} - Sean Leong
+                </p>
+            </aside>
+        </div>
+        <!-- Created by {name}. Built with <a href="https://astro.build/" target="_"
+                >Astro</a
+                >. -->
     </div>
 </footer>
 
 <style>
     footer {
-        position: sticky;
-        bottom: 0;
+        padding: 2rem 0;
     }
 
-    a {
-        font-weight: var(--fw-bold);
-    }
     .footer-wrapper {
         max-width: 1280px;
         margin-inline: auto;

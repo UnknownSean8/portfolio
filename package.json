@@ -17,6 +17,7 @@
     "@types/react-dom": "^19.1.6",
     "astro": "^5.12.4",
     "astro-icon": "^1.1.5",
+    "daisyui": "^5.5.14",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.11"
