@@ -7,17 +7,35 @@ import type { record } from "astro:schema";
 ---
 
 <Layout>
-    <div class="wrapper wrapper--narrow">
+    <div class="wrapper">
         <div class="layout-grid">
             <!-- Profile Image Card -->
             <div class="card card-img">
                 <Image
                     src={portrait}
+                    class="object-contain"
                     alt="profile_img"
                     height={500}
                     width={500}
                     loading={"eager"}
                 />
+            </div>
+
+            <!-- User Data Card -->
+            <div class="card-data">
+                <div class="flex-col flex my-auto object-center">
+                    <h1 class="name">Sean Leong Wei Xuan</h1>
+                    <p class="text-gray-500 meta">25 Years Old · Berlin, DE</p>
+                </div>
+            </div>
+
+            <div class="card card-experience">
+                <h1 class="title">Work Experience</h1>
+                <ul class="experience-list">
+                    <li>Wikimedia Deutschland e. V.</li>
+                    <li>Capital Dynamics</li>
+                    <li>Silverstreet International Pte Ltd</li>
+                </ul>
             </div>
 
             <!-- Profile Card -->
@@ -48,18 +66,56 @@ import type { record } from "astro:schema";
 
             <!-- Socials Card -->
             <div class="card card-socials">
-                <Icon name="github" size={70} />
-                <!-- <Icon name="linkedin" />
-                <Icon name="instagram" /> -->
+                <Icon name="mdi:github" size={50} />
+                <Icon name="mdi:linkedin" size={50} />
+                <Icon name="mdi:instagram" size={50} />
             </div>
         </div>
     </div>
 </Layout>
 
 <style>
+    .wrapper {
+        max-width: 1280px;
+        margin: auto;
+        padding-inline: 2rem;
+    }
     h1 {
         font-size: var(--fs-900);
         margin-bottom: var(--gap);
+    }
+
+    .name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0 0 8px;
+    }
+
+    .meta {
+        font-size: 0.8rem;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .card-experience .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .experience-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .experience-list li {
+        font-size: 0.95rem;
+        padding: 6px 0;
+        border-bottom: 1px dashed #1f1f1f;
     }
 
     span {
@@ -90,40 +146,73 @@ import type { record } from "astro:schema";
 
     @media (min-width: 800px) {
         .layout-grid {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 2fr;
+            grid-template-rows: 1fr 1fr 1fr auto;
         }
 
         .card-img {
             grid-column: 1 / span 1;
-            grid-row: 1 / span 2;
+            grid-row: 1 / span 1;
+        }
+
+        .card-data {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 1;
+            align-items: start;
+        }
+
+        .card-experience {
+            grid-column: 1 / span 2;
+            grid-row: 2 / span 2;
         }
 
         .card-socials {
-            grid-column: 1 / span 1;
-            grid-row: 3 / span 1;
+            grid-column: 1 / span 2;
+            grid-row: 4 / span 1;
         }
         .card-profile {
-            grid-column: 2 / span 1;
-            grid-row: 1 / span 3;
+            grid-column: 3 / span 1;
+            grid-row: 1 / span 4;
         }
+    }
+
+    .card-data {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
     }
 
     .card {
         padding: 1rem;
-        border: 1px solid grey;
+        /* border: 1px solid grey; */
         border-radius: 25px;
         box-shadow: 0 1rem 1.5rem -0.5rem rgb(0 50 100 / 0.15);
+    }
+
+    @media (max-width: 800px) {
+        .card-img {
+            margin: 0 auto;
+            max-height: 15rem;
+            max-width: 15rem;
+            border-radius: 100%;
+        }
     }
 
     .card-img {
         padding: 0;
         overflow: hidden;
-        max-height: 30rem;
+        max-height: 15rem;
+    }
+
+    .card-experience {
+        padding: 24px 28px;
+        /* font-family: 'Space Grotesk', sans-serif; */
     }
 
     .card-socials {
         display: flex;
+        flex-direction: row;
         justify-items: center;
     }
 
@@ -131,9 +220,11 @@ import type { record } from "astro:schema";
         display: flex;
         justify-content: space-around;
         margin: auto;
+        transition-duration: 500ms;
     }
 
     .card-socials > *:hover {
+        transition-duration: 500ms;
         scale: 1.1;
     }
 </style>
