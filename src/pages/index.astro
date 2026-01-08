@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import portrait from "../assets/portrait2.jpeg";
+import portrait from "../assets/portrait3.jpeg";
 import type { record } from "astro:schema";
 ---
 
@@ -30,38 +30,224 @@ import type { record } from "astro:schema";
             </div>
 
             <div class="card card-experience">
-                <h1 class="title">Work Experience</h1>
+                <ul
+                    class="timeline timeline-snap-icon timeline-compact timeline-vertical"
+                >
+                    <li>
+                        <div class="timeline-middle">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="h-5 w-5"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="timeline-end md:mb-5">
+                            <time class="font-mono italic">2024 - Present</time>
+                            <div class="company mt-1 mb-2">
+                                Wikimedia Deutschland e. V.
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consetetur
+                                sadipscing elitr, sed diam nonumy eirmod tempor
+                                invidunt ut labore et dolore magna aliquyam
+                                erat, sed diam voluptua.
+                            </p>
+                        </div>
+                        <hr />
+                    </li>
+                    <li>
+                        <hr />
+                        <div class="timeline-middle">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="h-5 w-5"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="timeline-end md:mb-5">
+                            <time class="font-mono italic">2023 - 2024</time>
+                            <div class="company mt-1 mb-2">
+                                Capital Dynamics
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consetetur
+                                sadipscing elitr, sed diam nonumy eirmod tempor
+                                invidunt ut labore et dolore magna aliquyam
+                                erat, sed diam voluptua.
+                            </p>
+                        </div>
+                        <hr />
+                    </li>
+                    <li>
+                        <hr />
+                        <div class="timeline-middle">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                class="h-5 w-5"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="timeline-end">
+                            <time class="font-mono italic">2022 - 2023</time>
+                            <div class="company mt-1 mb-2">
+                                Silverstreet International Pte Ltd
+                            </div>
+                            <p class="description mb-0!">
+                                Lorem ipsum dolor sit amet, consetetur
+                                sadipscing elitr, sed diam nonumy eirmod tempor
+                                invidunt ut labore et dolore magna aliquyam
+                                erat, sed diam voluptua.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <h1 class="title">Work Experience</h1>
                 <ul class="experience-list">
                     <li>Wikimedia Deutschland e. V.</li>
                     <li>Capital Dynamics</li>
                     <li>Silverstreet International Pte Ltd</li>
-                </ul>
+                </ul> -->
             </div>
 
             <!-- Profile Card -->
             <div class="card card-profile">
-                <h1><span>Hiii I'm</span><br />Sean Leong Wei Xuan</h1>
+                <div>
+                    <div class="chat chat-end">
+                        <div class="chat-header">
+                            Obi-Wan Kenobi
+                            <time class="text-xs opacity-50">2 hour ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            Hey Sean, hope you're doing well.
+                        </div>
+                        <div class="chat-footer opacity-50">Seen</div>
+                    </div>
+                    <div class="chat chat-start">
+                        <div class="chat-header">
+                            Sean Leong
+                            <time class="text-xs opacity-50">2 hours ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            Hi, nice to meet you.
+                        </div>
+                        <div class="chat-footer opacity-50">Delivered</div>
+                    </div>
+                </div>
 
-                <p>
+                <div>
+                    <div class="chat chat-end">
+                        <div class="chat-header">
+                            Obi-Wan Kenobi
+                            <time class="text-xs opacity-50">2 hour ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            So, tell me about yourself
+                        </div>
+                        <div class="chat-footer opacity-50">Seen</div>
+                    </div>
+                    <div class="chat chat-start">
+                        <div class="chat-header">
+                            Sean Leong
+                            <time class="text-xs opacity-50">2 hour ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            I am a software developer with expertise in both
+                            front-end and backend technologies, including
+                            Javascript, Python, and Java.
+                        </div>
+                        <div class="chat-footer opacity-50">Delivered</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chat chat-end">
+                        <div class="chat-header">
+                            Obi-Wan Kenobi
+                            <time class="text-xs opacity-50">2 hour ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            Interesting, what are you passionate about?
+                        </div>
+                        <div class="chat-footer opacity-50">Seen</div>
+                    </div>
+                    <div class="chat chat-start">
+                        <div class="chat-header">
+                            Sean Leong
+                            <time class="text-xs opacity-50">2 hour ago</time>
+                        </div>
+                        <div class="chat-bubble chat-content">
+                            Passionate about building scalable and user-friendly
+                            applications, I focus on writing clean, efficient
+                            code and staying current with industry trends.
+                        </div>
+                        <div class="chat-footer opacity-50">Delivered</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="chat chat-end">
+                        <div class="chat-header">
+                            Obi-Wan Kenobi
+                            <time class="text-xs opacity-50">now</time>
+                        </div>
+                        <div class="chat-bubble chat-content flex items-end">
+                            <textarea
+                                class="textarea textarea-ghost textarea-info"
+                                placeholder="What's on your mind?"></textarea>
+                            <div class="btn btn-ghost p-2">
+                                <Icon name="mdi:send" size={25} />
+                            </div>
+                        </div>
+                        <div class="chat-footer opacity-50">Seen</div>
+                    </div>
+                </div>
+                <!-- <h1>
+                    <span>Welcome to my page!</span><br />Sean Leong Wei Xuan
+                </h1>
+
+                <p class="description">
                     I am a software developer with expertise in both front-end
                     and backend technologies, including Javascript, Python, and
                     Java.
                 </p>
-                <p>
+
+                <p class="description">
                     Passionate about building scalable and user-friendly
                     applications, I focus on writing clean, efficient code and
                     staying current with industry trends.
                 </p>
-                <p>
+
+                <p class="description">
                     Skilled in API integrations, responsive design, and
                     performance optimization.
                 </p>
 
                 <hr />
 
-                <h2>Currently working for: WMDE</h2>
+                <div class="current-work mx-auto">
+                    <span class="label">Currently working for:</span>
+                    <span class="company">WMDE</span>
+                </div>
 
-                <div class="work-grid"></div>
+                <div class="work-grid"></div> -->
             </div>
 
             <!-- Socials Card -->
@@ -83,6 +269,31 @@ import type { record } from "astro:schema";
     h1 {
         font-size: var(--fs-900);
         margin-bottom: var(--gap);
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 14px;
+    }
+
+    .chat-content {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .label {
+        font-size: 0.75rem;
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .company {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
     }
 
     .name {
@@ -122,11 +333,6 @@ import type { record } from "astro:schema";
         font-size: var(--fs-400);
         font-weight: var(--fw-light);
         color: var(--color-gray-500);
-    }
-
-    p,
-    hr {
-        margin-bottom: var(--gap);
     }
 
     h2 {
@@ -173,6 +379,9 @@ import type { record } from "astro:schema";
         .card-profile {
             grid-column: 3 / span 1;
             grid-row: 1 / span 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
     }
 
