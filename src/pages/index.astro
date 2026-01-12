@@ -219,7 +219,8 @@ import type { record } from "astro:schema";
                                 <Icon name="mdi:send" size={25} />
                             </div>
                         </div>
-                        <div class="chat-footer opacity-50">Seen</div>
+                        <div id="textCaption" class="chat-footer opacity-50">
+                        </div>
                     </div>
 
                     <div id="replyTextBubble" class="chat chat-end" hidden>
@@ -229,11 +230,11 @@ import type { record } from "astro:schema";
                         </div>
                         <div
                             id="chatReply"
-                            class="chat-bubble chat-content my-0.5"
+                            class="chat-bubble chat-content my-0.5 wrap-break-word"
                         >
                             This is the user's question.
                         </div>
-                        <div class="chat-footer opacity-50">Seen</div>
+                        <div class="chat-footer opacity-50">Sent</div>
                     </div>
                 </div>
                 <!-- <h1>
@@ -286,12 +287,22 @@ import type { record } from "astro:schema";
             submitNewChat();
         });
 
+        let typingTimer: NodeJS.Timeout;
         textContent?.addEventListener("keypress", (e) => {
             const event = e as KeyboardEvent;
             if (event.key === "Enter" && !event.shiftKey) {
                 e.preventDefault();
                 submitNewChat();
             }
+
+            const textCaption = document.getElementById("textCaption");
+            if (textCaption) textCaption.textContent = "Typing...";
+
+            clearTimeout(typingTimer);
+
+            typingTimer = setTimeout(() => {
+                if (textCaption) textCaption.textContent = "";
+            }, 1000);
         });
     });
 
@@ -304,7 +315,7 @@ import type { record } from "astro:schema";
 
         const chatReply = document.getElementById("chatReply");
         if (chatReply) {
-            chatReply.innerText = textValue;
+            chatReply.textContent = textValue;
         }
         replyTextBubble?.removeAttribute("hidden");
     }
