@@ -13,10 +13,11 @@ import type { record } from "astro:schema";
             <div class="card card-img">
                 <Image
                     src={portrait}
-                    class="object-contain"
+                    class="object-fill object-bottom"
+                    layout="constrained"
                     alt="profile_img"
                     height={500}
-                    width={500}
+                    width={300}
                     loading={"eager"}
                 />
             </div>
@@ -135,7 +136,7 @@ import type { record } from "astro:schema";
                             Obi-Wan Kenobi
                             <time class="text-xs opacity-50">2 hour ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             Hey Sean, hope you're doing well.
                         </div>
                         <div class="chat-footer opacity-50">Seen</div>
@@ -145,7 +146,7 @@ import type { record } from "astro:schema";
                             Sean Leong
                             <time class="text-xs opacity-50">2 hours ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             Hi, nice to meet you.
                         </div>
                         <div class="chat-footer opacity-50">Delivered</div>
@@ -158,7 +159,7 @@ import type { record } from "astro:schema";
                             Obi-Wan Kenobi
                             <time class="text-xs opacity-50">2 hour ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             So, tell me about yourself
                         </div>
                         <div class="chat-footer opacity-50">Seen</div>
@@ -168,7 +169,7 @@ import type { record } from "astro:schema";
                             Sean Leong
                             <time class="text-xs opacity-50">2 hour ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             I am a software developer with expertise in both
                             front-end and backend technologies, including
                             Javascript, Python, and Java.
@@ -183,7 +184,7 @@ import type { record } from "astro:schema";
                             Obi-Wan Kenobi
                             <time class="text-xs opacity-50">2 hour ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             Interesting, what are you passionate about?
                         </div>
                         <div class="chat-footer opacity-50">Seen</div>
@@ -193,7 +194,7 @@ import type { record } from "astro:schema";
                             Sean Leong
                             <time class="text-xs opacity-50">2 hour ago</time>
                         </div>
-                        <div class="chat-bubble chat-content">
+                        <div class="chat-bubble chat-content my-0.5">
                             Passionate about building scalable and user-friendly
                             applications, I focus on writing clean, efficient
                             code and staying current with industry trends.
@@ -203,18 +204,34 @@ import type { record } from "astro:schema";
                 </div>
 
                 <div>
-                    <div class="chat chat-end">
+                    <div id="sendTextArea" class="chat chat-end">
                         <div class="chat-header">
                             Obi-Wan Kenobi
                             <time class="text-xs opacity-50">now</time>
                         </div>
-                        <div class="chat-bubble chat-content flex items-end">
+                        <div
+                            class="chat-bubble chat-content flex items-end my-0.5"
+                        >
                             <textarea
                                 class="textarea textarea-ghost textarea-info"
                                 placeholder="What's on your mind?"></textarea>
-                            <div class="btn btn-ghost p-2">
+                            <div id="sendChat" class="btn btn-ghost p-2 pb-0">
                                 <Icon name="mdi:send" size={25} />
                             </div>
+                        </div>
+                        <div class="chat-footer opacity-50">Seen</div>
+                    </div>
+
+                    <div id="replyTextBubble" class="chat chat-end" hidden>
+                        <div class="chat-header">
+                            Obi-Wan Kenobi
+                            <time class="text-xs opacity-50">now</time>
+                        </div>
+                        <div
+                            id="chatReply"
+                            class="chat-bubble chat-content my-0.5"
+                        >
+                            This is the user's question.
                         </div>
                         <div class="chat-footer opacity-50">Seen</div>
                     </div>
@@ -260,6 +277,37 @@ import type { record } from "astro:schema";
     </div>
 </Layout>
 
+<script>
+    const sendChat = document.getElementById("sendChat");
+    const textContent = document.querySelector("textarea.textarea-info");
+
+    sendChat?.addEventListener("click", () => {
+        submitNewChat();
+    });
+
+    textContent?.addEventListener("keypress", (e) => {
+        const event = e as KeyboardEvent;
+        if (event.key === "Enter" && !event.shiftKey) {
+            e.preventDefault();
+            submitNewChat();
+        }
+    });
+
+    function submitNewChat() {
+        const sendTextArea = document.getElementById("sendTextArea");
+        const replyTextBubble = document.getElementById("replyTextBubble");
+        sendTextArea?.setAttribute("hidden", "true");
+
+        const textValue = (textContent as HTMLTextAreaElement).value;
+
+        const chatReply = document.getElementById("chatReply");
+        if (chatReply) {
+            chatReply.innerText = textValue;
+        }
+        replyTextBubble?.removeAttribute("hidden");
+    }
+</script>
+
 <style>
     .wrapper {
         max-width: 1280px;
@@ -293,7 +341,7 @@ import type { record } from "astro:schema";
         font-size: 1rem;
         font-weight: 600;
         letter-spacing: 0.08em;
-        white-space: nowrap;
+        /* white-space: nowrap; */
     }
 
     .name {
