@@ -13,7 +13,7 @@ import type { record } from "astro:schema";
             <div class="card card-img">
                 <Image
                     src={portrait}
-                    class="object-fill object-bottom"
+                    class="h-full object-cover object-center"
                     layout="constrained"
                     alt="profile_img"
                     height={500}
@@ -215,7 +215,7 @@ import type { record } from "astro:schema";
                             <textarea
                                 class="textarea textarea-ghost textarea-info"
                                 placeholder="What's on your mind?"></textarea>
-                            <div id="sendChat" class="btn btn-ghost p-2 pb-0">
+                            <div id="sendChat" class="btn btn-ghost p-2">
                                 <Icon name="mdi:send" size={25} />
                             </div>
                         </div>
@@ -278,19 +278,21 @@ import type { record } from "astro:schema";
 </Layout>
 
 <script>
-    const sendChat = document.getElementById("sendChat");
-    const textContent = document.querySelector("textarea.textarea-info");
-
-    sendChat?.addEventListener("click", () => {
-        submitNewChat();
-    });
-
-    textContent?.addEventListener("keypress", (e) => {
-        const event = e as KeyboardEvent;
-        if (event.key === "Enter" && !event.shiftKey) {
-            e.preventDefault();
+    let textContent: HTMLTextAreaElement | null = null;
+    document.addEventListener("astro:page-load", () => {
+        const sendChat = document.getElementById("sendChat");
+        textContent = document.querySelector("textArea");
+        sendChat?.addEventListener("click", () => {
             submitNewChat();
-        }
+        });
+
+        textContent?.addEventListener("keypress", (e) => {
+            const event = e as KeyboardEvent;
+            if (event.key === "Enter" && !event.shiftKey) {
+                e.preventDefault();
+                submitNewChat();
+            }
+        });
     });
 
     function submitNewChat() {
