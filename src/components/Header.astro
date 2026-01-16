@@ -17,6 +17,41 @@ const navItems = [
 
 <header>
     <div class="header-wrapper">
+        <!-- Mobile View Dock -->
+        <div class="fab lg:hidden">
+            <!-- a focusable div with tabindex is necessary to work on all browsers. role="button" is necessary for accessibility -->
+            <div
+                tabindex="0"
+                role="button"
+                class="btn btn-lg btn-circle btn-info bg-base-200 border-base-300"
+            >
+                <Icon name="mdi:hamburger-menu" size={25} />
+            </div>
+
+            <!-- close button should not be focusable so it can close the FAB when clicked. It's just a visual placeholder -->
+            <div class="fab-close">
+                <span class="btn btn-circle btn-lg btn-error">✕</span>
+            </div>
+
+            <!-- buttons that show up when FAB is open -->
+            <div>
+                About <a class="btn btn-lg btn-circle" href="/"
+                    ><Icon
+                        name="mdi:card-account-details-outline"
+                        size={25}
+                    /></a
+                >
+            </div>
+            <div>
+                Blog <a class="btn btn-lg btn-circle" href="/blog"
+                    ><Icon name="mdi:book-open-variant" size={25} /></a
+                >
+            </div>
+
+            <!-- <div>Label C <button class="btn btn-lg btn-circle">C</button></div> -->
+        </div>
+
+        <!-- Desktop View Header -->
         <div class="navbar bg-base-200 shadow-sm rounded-2xl">
             <div class="navbar-start">
                 <a class="btn btn-ghost text-xl">Sean Leong</a>
