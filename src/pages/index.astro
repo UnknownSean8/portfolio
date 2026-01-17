@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import portrait from "../assets/portrait3.jpeg";
 import type { record } from "astro:schema";
+import PixelPet from "../components/PixelPet.astro";
 ---
 
 <Layout>
@@ -30,7 +31,8 @@ import type { record } from "astro:schema";
                 </div>
             </div>
 
-            <div class="card card-experience">
+            <div id="card-experience" class="card card-experience">
+                <PixelPet />
                 <ul
                     class="timeline timeline-snap-icon timeline-compact timeline-vertical"
                 >

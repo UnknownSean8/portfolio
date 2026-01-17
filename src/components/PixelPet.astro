@@ -1,0 +1,149 @@
+---
+
+---
+
+<div id="pixel-pet"></div>
+
+<script>
+    const pet = document.getElementById("pixel-pet");
+
+    // --- CONFIG ---
+    const SCALE = 2;
+    const SIZE = 32;
+    const VISUAL_SIZE = SIZE * SCALE;
+
+    const WALK_FRAMES = 8;
+    const WALK_FRAME_SPEED = 8; // lower = faster
+
+    const IDLE_FRAMES = 4;
+    const IDLE_FRAME_SPEED = 8;
+
+    const GRAVITY = 0.3;
+
+    // --- STATE ---
+    let x = 50;
+    let y = 50;
+    let vx = 1;
+    let vy = 0;
+
+    let frame = 0;
+    let tick = 0;
+
+    let state = "walk";
+    let stateTimer = 0;
+
+    function getFloorY() {
+        let floorY = window.innerHeight;
+
+        const rect = document
+            .getElementById("card-experience")
+            ?.getBoundingClientRect();
+
+        floorY = Math.min(floorY, rect!.top);
+
+        return floorY;
+    }
+
+    function getMaxX() {
+        let maxX = window.innerWidth;
+        const rect = document
+            .getElementById("card-experience")
+            ?.getBoundingClientRect();
+
+        maxX = rect!.right;
+        return maxX;
+    }
+
+    function setState(nextState: string) {
+        if (state === nextState) return;
+        state = nextState;
+        frame = 0;
+        tick = 0;
+        stateTimer = 0;
+
+        if (state === "idle") {
+            vx = 0;
+        }
+
+        if (state === "walk") {
+            vx = Math.random() > 0.5 ? 1 : -1;
+        }
+    }
+
+    function update() {
+        stateTimer++;
+
+        if (state === "walk" && stateTimer > 120 && Math.random() < 0.005) {
+            setState("idle");
+        }
+
+        if (state === "idle" && stateTimer > 60 && Math.random() < 0.02) {
+            setState("walk");
+        }
+        // gravity
+        vy += GRAVITY;
+
+        // movement
+        x += vx;
+        y += vy;
+
+        const floorY = getFloorY() - VISUAL_SIZE - 15;
+        const maxX = getMaxX() - VISUAL_SIZE - 35;
+
+        // BORDER COLLISIONS
+        if (x <= 0) {
+            x = 0;
+            vx = state === "walk" ? 1 : 0;
+        }
+
+        if (x >= maxX) {
+            x = maxX;
+            vx = state === "walk" ? -1 : 0;
+        }
+
+        if (y >= floorY) {
+            y = floorY;
+            vy = 0;
+        }
+
+        if (pet) {
+            // ANIMATION
+            tick++;
+            if (state === "walk" && tick % WALK_FRAME_SPEED === 0) {
+                frame = (frame + 1) % WALK_FRAMES;
+            }
+
+            if (state === "idle" && tick % IDLE_FRAME_SPEED === 0) {
+                frame = (frame + 1) % IDLE_FRAMES;
+            }
+
+            const row = state === "walk" ? 4 : 0;
+            pet.style.backgroundPosition = `-${frame * SIZE}px -${row * SIZE}px`;
+            const direction = vx >= 0 ? 1 : -1;
+
+            // APPLY
+            pet.style.transform = `translate(${x}px, ${y}px) scale(${direction * SCALE}, ${SCALE})`;
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    update();
+</script>
+
+<style>
+    #pixel-pet {
+        position: fixed;
+        width: 32px;
+        height: 32px;
+        left: 50px;
+        top: 50px;
+
+        background-image: url("/src/assets/pet.png");
+        background-repeat: no-repeat;
+        image-rendering: pixelated;
+
+        z-index: 9999;
+        pointer-events: none;
+    }
+</style>
