@@ -21,8 +21,8 @@
     const GRAVITY = 0.3;
 
     // --- STATE ---
-    let x = 50;
-    let y = 50;
+    let x = getMinX() + 50;
+    let y = getFloorY() - 150;
     let vx = 1;
     let vy = 0;
 
@@ -52,6 +52,16 @@
 
         maxX = rect!.right;
         return maxX;
+    }
+
+    function getMinX() {
+        let minX = window.innerWidth;
+        const rect = document
+            .getElementById("card-experience")
+            ?.getBoundingClientRect();
+
+        minX = rect!.left;
+        return minX;
     }
 
     function setState(nextState: string) {
@@ -88,11 +98,12 @@
         y += vy;
 
         const floorY = getFloorY() - VISUAL_SIZE - 15;
+        const minX = getMinX() - VISUAL_SIZE + 35;
         const maxX = getMaxX() - VISUAL_SIZE - 35;
 
         // BORDER COLLISIONS
-        if (x <= 0) {
-            x = 0;
+        if (x <= minX) {
+            x = minX;
             vx = state === "walk" ? 1 : 0;
         }
 
