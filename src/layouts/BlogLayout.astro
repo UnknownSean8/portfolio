@@ -4,7 +4,17 @@ import Layout from "./Layout.astro";
 
 <Layout>
     <div class="wrapper">
-        <a href="/blog">Back</a>
-        <slot />
+        <a href="/blog" class="ml-5 text-xl">Back</a>
+        <div class="m-3">
+            <slot />
+        </div>
     </div>
 </Layout>
+
+<style>
+    .wrapper {
+        max-width: 1280px;
+        margin: auto;
+        padding-inline: 2rem;
+    }
+</style>
