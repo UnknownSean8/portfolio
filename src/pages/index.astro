@@ -281,6 +281,8 @@ import PixelPet from "../components/PixelPet.astro";
 </Layout>
 
 <script>
+    import { actions } from "astro:actions";
+
     let textContent: HTMLTextAreaElement | null = null;
     document.addEventListener("astro:page-load", () => {
         const sendChat = document.getElementById("sendChat");
@@ -308,18 +310,24 @@ import PixelPet from "../components/PixelPet.astro";
         });
     });
 
-    function submitNewChat() {
+    async function submitNewChat() {
         const sendTextArea = document.getElementById("sendTextArea");
         const replyTextBubble = document.getElementById("replyTextBubble");
         sendTextArea?.setAttribute("hidden", "true");
 
         const textValue = (textContent as HTMLTextAreaElement).value;
-
         const chatReply = document.getElementById("chatReply");
         if (chatReply) {
             chatReply.textContent = textValue;
         }
         replyTextBubble?.removeAttribute("hidden");
+
+        const { data, error } = await actions.send({
+            email: "seanwx8@gmail.com",
+            name: "Sean",
+            subject: "Test Email",
+            html: textValue,
+        });
     }
 </script>
 
