@@ -17,7 +17,7 @@ export const server = {
         // accept: "form",
         handler: async (input) => {
             const { data, error } = await resend.emails.send({
-                from: `${input.name} <onboarding@resend.dev>`,
+                from: `${input.name} <hello@updates.seanwx.com>`,
                 to: input.email,
                 subject: input.subject,
                 html: input.html,
